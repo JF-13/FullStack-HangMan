@@ -1,3 +1,77 @@
+a {
+	color: white;
+}
+
+body {
+	background-image: url("assets/uiux.jpg");
+	-moz-background-size: cover;
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: top center !important;
+	background-repeat: no-repeat !important;
+	background-attachment: fixed;
+/*	background-color: rgba(0,0,255,0.5);*/
+}
+
+.p {
+	font-family: 'Oswald', sans-serif;
+}
+
+.banner1 {
+	font-family: 'Montserrat Subrayada', sans-serif;
+	text-align: center;
+	font-size: 70px;
+	color: white;
+
+
+}
+
+.banner2 {
+	font-family: 'Satisfy', cursive;
+	text-align: center;
+	font-size: 90px;
+	line-height: 30%;
+	color: #bf00ff;
+/*	-webkit-text-stroke-width: .5px;
+   	-webkit-text-stroke-color: #bcd9f5;*/
+}
+
+
+
+.img-rounded {
+	background-color: grey;
+}
+
+.hey {
+    background-repeat: repeat;
+}
+
+.firstMsg {
+	color: white;
+	text-align: center;
+	animation: blinker 3s linear infinite;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+@keyframes blinker {  
+  50% { opacity: 0; }
+}
+
+.scoreLog {
+	font-family: 'Oswald', sans-serif;
+	font-size: 16px;
+	color: white;
+	margin: 10px;
+}
+
+.x {
+	margin-bottom: 50px;
+}
+
 .footer {
 	text-align: center;
+	color: white;
+	background-color: grey;
+	padding-top: 17px;
 }
