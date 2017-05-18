@@ -14,7 +14,12 @@ body {
 }
 
 .p {
-	font-family: 'Oswald', sans-serif;
+	font-family: 'Doppio One', sans-serif;
+	font-size: 13px;
+}
+
+.anyKey {
+	font-family: 'Codystar', cursive;
 }
 
 .banner1 {
@@ -22,8 +27,6 @@ body {
 	text-align: center;
 	font-size: 70px;
 	color: white;
-
-
 }
 
 .banner2 {
@@ -32,11 +35,18 @@ body {
 	font-size: 90px;
 	line-height: 30%;
 	color: #bf00ff;
+/*	text-shadow:  rgb(255, 255, 255)
+	0px 0px 10px, rgb(255, 255, 255)
+	0px 0px 20px, rgb(255, 255, 255)
+	0px 0px 30px, rgb(255, 0, 222)
+	0px 0px 40px, rgb(255, 0, 222)
+	0px 0px 70px, rgb(255, 0, 222)
+	0px 0px 80px, rgb(255, 0, 222)
+	0px 0px 100px;;*/
 /*	-webkit-text-stroke-width: .5px;
    	-webkit-text-stroke-color: #bcd9f5;*/
+
 }
-
-
 
 .img-rounded {
 	background-color: grey;
@@ -47,12 +57,32 @@ body {
 }
 
 .firstMsg {
+	font-family: 'Codystar', cursive;
+	font-size: 13px;
 	color: white;
 	text-align: center;
 	animation: blinker 3s linear infinite;
-	margin-top: 20px;
+	margin-top: 30px;
 	margin-bottom: 20px;
 }
+
+.secondMsg {
+	font-family: 'Codystar', cursive;
+	font-size: 34px;
+	color: white;
+	text-align: center;
+	margin-top: 40px;
+	margin-bottom: 30px;
+	text-shadow:  rgb(255, 255, 255)
+	0px 0px 10px, rgb(255, 255, 255)
+	0px 0px 20px, rgb(255, 255, 255)
+	0px 0px 30px, rgb(255, 0, 222)
+	0px 0px 40px, rgb(255, 0, 222)
+	0px 0px 70px, rgb(255, 0, 222)
+	0px 0px 80px, rgb(255, 0, 222)
+	0px 0px 100px;;
+}
+
 
 @keyframes blinker {  
   50% { opacity: 0; }
@@ -68,10 +98,32 @@ body {
 .x {
 	margin-bottom: 50px;
 }
-
+/*
 .footer {
 	text-align: center;
 	color: white;
 	background-color: grey;
 	padding-top: 17px;
+}*/
+
+.middleBoxes {
+	border: 1px;
+	border-style: solid;
+	border-color: grey;
+	border-radius: 10px;
+	text-align: center;
+	font-size: 24px;
+	color: white;
+	padding-bottom: 200px;
+	padding-top: 20px;
+}
+dd
+.middleLeft {
+	border-bottom-right-radius: 0px;
+	border-top-right-radius: 0px;
+}
+
+.middleRight {
+	border-bottom-left-radius: 0px;
+	border-top-left-radius: 0px;
 }

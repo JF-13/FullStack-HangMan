@@ -6,6 +6,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat+Subrayada|Satisfy" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Codystar|Doppio+One" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
 	<link href="style.css" rel="stylesheet" type="text/css" />
 	<link href="reset.css" rel="stylesheet" type="text/css" />
@@ -17,10 +19,10 @@
 			<nav class="navbar">
 				<div class="container-fluid">
 			    	<div class="navbar-header">
-	      	    		<a class="navbar-brand p" href="index.html">Jose Flores 2017</a>
+	      	    		<a class="navbar-brand p" href="index.html">JOSE FLORES 2017</a>
 					</div>
 				    <ul class="nav navbar-nav navbar-right">
-				    	<li class="p"><a href="index.html">Reset Game</a></li>
+				    	<li class="p"><a href="index.html">RESET GAME</a></li>
 				    </ul>
 				</div>
 			</nav>
@@ -34,7 +36,20 @@
 
 	<div class="container container1">
 		<div class="row">
-			<div class="col-xm-12 col-sm-12 col-m-12 firstMsg p">- PRESS ANY KEY TO PLAY -</div>
+			<div class="col-xm-12 col-sm-4 col-m-5"></div>
+			<div id="message" class="col-xm-12 col-sm-4 col-m-2 firstMsg">- PRESS ANY KEY TO PLAY -</div>
+			<div class="col-xm-12 col-sm-4 col-m-5"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-xm-0 col-sm-0 col-m-1"></div>
+			<div id="middleLeft" class="col-xm-12 col-sm-6 col-m-5"></div>
+			<div id="middleRight" class="col-xm-12 col-sm-6 col-m-5"><a ></div>
+			<div class="col-xm-0 col-sm-0 col-m-1"></div>
+		</div>
+
+		<div class="row">
+			<div id="msg2" class="col-xm-12 col-sm-12 col-m-12"></div>
 		</div>
 		<div class="row">
 			<div class="col-xm-0 col-sm-1 col-m-1 hey"></div>
@@ -54,68 +69,80 @@
 	    <script>
 
 
-        var car = {
-          make: "Honda",
-          model: "Fit",
-          color: "Blue Raspberry",
-          mileage: 3000,
-          isWorking: true,
+        var keyCount = 0;
 
-          driveToWork: function() {
 
-            alert("Old Mileage: " + this.mileage);
+      	var player = {
+      		score: 0,
+      		trys: 5,
 
-            this.mileage = this.mileage + 8;
 
-            alert("New mileage: " + this.mileage);
-          },
+      	};
 
-          driveAroundWorld: function() {
+      	document.onkeyup = function(event) {
+      	var userChoice = String.fromCharCode(event.key).toLowerCase();
 
-            alert("Old Mileage: " + this.mileage);
+      		if (keyCount === 0) {
+      			$("#message").html("Guess the programming language").removeClass("firstMsg").addClass("secondMsg");
+      			// $("#middleLeft").html("Middle Left").addClass("middleBoxes p middleLeft");
+      			$("#middleRight").html("Score: " + player.score).addClass("middleBoxes p middleRight");
 
-            this.mileage = this.mileage + 24000;
+      		} else {
+      			// $("#middleLeft").html("Middle Left").addClass("middleBoxes p middleLeft");
+      			$("#middleRight").html("Score: " + player.score).addClass("middleBoxes p middleRight");
 
-            alert("New Mileage: " + this.mileage);
-            alert("Car needs a tuneup!");
+      		}
 
-            this.isWorking = false;
-          },
+      		
 
-          getTuneUp: function() {
-            alert("Car is ready to go!");
-            this.isWorking = true;
-          },
+      	// var car = {
+        //   make: "Honda",
+        //   model: "Fit",
+        //   color: "Blue Raspberry",
+        //   mileage: 3000,
+        //   isWorking: true,
 
-          honk: function() {
-            alert("Honk! Honk!");
-          }
-        };
+        //   driveToWork: function() {
 
-        document.onkeyup = function(event) {
+        //     alert("Old Mileage: " + this.mileage);
 
-          var userChoice = String.fromCharCode(event.key).toLowerCase();
+        //     this.mileage = this.mileage + 8;
 
-          if ((userChoice === 'm') || userChoice === 'd'|| userChoice === 'w' || userChoice === 't' || userChoice === 'h')  {
+        //     alert("New mileage: " + this.mileage);
+        //   },
 
-            if (userChoice === 'm') {
-                console.log(car.mileage);
-            } else if (userChoice === 'd') {
-                console.log(car.driveToWork());
-            } else if (userChoice === 'w') {
-                console.log(car.driveAroundWorld());
-            } else if (userChoice === 't') {
-                console.log(car.getTuneUp());
-            } else if (userChoice === 'h') {
-                console.log(car.honk());
-            }
-          
+        //   driveAroundWorld: function() {
 
-            var html = "<P>Press mileage(m), driveToWork(d), driveAroundWorld(w), getTuneUp(t), and honk(h) to control the car</p>" +
-              "<p>car mileage</p>" + car.mileage;
-            document.querySelector('#message').innerHTML = html;
-        }
+        //     alert("Old Mileage: " + this.mileage);
+
+        //     this.mileage = this.mileage + 24000;
+
+        //     alert("New Mileage: " + this.mileage);
+        //     alert("Car needs a tuneup!");
+
+        //     this.isWorking = false;
+        //   },
+
+        //   getTuneUp: function() {
+        //     alert("Car is ready to go!");
+        //     this.isWorking = true;
+        //   },
+
+        //   honk: function() {
+        //     alert("Honk! Honk!");
+        //   }
+        // };
+      	  // scoreKeeper();
+	      // var newDiv = $("<div>");
+	      // msg2.html("im here 2");
+	      // $("#msg2").prepend(newDiv);
+
+
+          // var html = "<p></p>";
+          // document.querySelector('#message').innerHTML = html;
+
       };
+
     </script>
 </body>
 </html>
