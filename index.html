@@ -42,10 +42,10 @@
 		</div>
 
 		<div class="row">
-			<div class="col-xm-0 col-sm-0 col-m-1"></div>
-			<div id="middleLeft" class="col-xm-12 col-sm-6 col-m-5"></div>
-			<div id="middleRight" class="col-xm-12 col-sm-6 col-m-5"><a ></div>
-			<div class="col-xm-0 col-sm-0 col-m-1"></div>
+			<div class="col-xm-0 col-sm-0 col-m-2"></div>
+			<div id="middleLeft" class="col-xm-12 col-sm-6 col-m-4"><img id="hmPic"></div>
+			<div id="middleRight" class="col-xm-12 col-sm-6 col-m-4"><a ></div>
+			<div class="col-xm-0 col-sm-0 col-m-2"></div>
 		</div>
 
 		<div class="row">
@@ -84,7 +84,9 @@
 
       		if (keyCount === 0) {
       			$("#message").html("Guess the programming language").removeClass("firstMsg").addClass("secondMsg");
-      			// $("#middleLeft").html("Middle Left").addClass("middleBoxes p middleLeft");
+
+      			// $("#hmPic").html("<img src="assets/hm1.png">").addClass("middleBoxes p middleLeft");
+
       			$("#middleRight").html("Score: " + player.score).addClass("middleBoxes p middleRight");
 
       		} else {
@@ -143,6 +145,10 @@
 
       };
 
+      var pLanguages = ["sql", "java", "python", "javascript", "c++", "c#", "perl", "swift", "php", "ruby"];
+      var plDefinitions = ["Domain-specific language used in programming and designed for managing data held in a relational database management system (RDBMS), or for stream processing in a relational data stream management system (RDSMS)", "General-purpose computer programming language that is concurrent, class-based, object-oriented,[14] and specifically designed to have as few implementation dependencies as possible. It is intended to let application developers 'write once, run anywhere' (WORA)", "Widely used high-level programming language for general-purpose programming, created by Guido van Rossum and first released in 1991. An interpreted language that has a design philosophy which emphasizes code readability", "High-level, dynamic, untyped, and interpreted run-time language. It has been standardized in the ECMAScript language specification. Alongside HTML and CSS, this language is one of the three core technologies of World Wide Web content production; the majority of websites employ it, and all modern Web browsers support it without the need for plug-ins", "Has imperative, object-oriented and generic programming features, while also providing facilities for low-level memory manipulation. It was designed with a bias toward system programming and embedded, resource-constrained and large systems, with performance, efficiency and flexibility of use as its design highlights", "Is a multi-paradigm programming language encompassing strong typing, imperative, declarative, functional, generic, object-oriented (class-based), and component-oriented programming disciplines", "Family of high-level, general-purpose, interpreted, dynamic programming languages, developed by Larry Wall in 1987 as a general-purpose Unix scripting language to make report processing easier", "General-purpose, multi-paradigm, compiled programming language developed by Apple Inc. for iOS, macOS, watchOS, tvOS, and Linux. Swift is designed to work with Apple's Cocoa and Cocoa Touch frameworks and the large body of extant Objective-C (ObjC) code written for Apple products.", "Server-side scripting language designed primarily for web development but also used as a general-purpose programming language. Originally created by Rasmus Lerdorf in 1994, the PHP reference implementation is now produced by The PHP Development Team.", "Dynamic, reflective, object-oriented, general-purpose programming language. It was designed and developed in the mid-1990s by Yukihiro 'Matz' Matsumoto in Japan. According to its creator, this language was influenced by Perl, Smalltalk, Eiffel, Ada, and Lisp."];
+
     </script>
 </body>
 </html>
+
