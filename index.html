@@ -40,100 +40,120 @@
 			<div id="message" class="col-xm-12 col-sm-4 col-m-2 firstMsg">- PRESS ANY KEY TO PLAY -</div>
 			<div class="col-xm-12 col-sm-4 col-m-5"></div>
 		</div>
-
-		<div class="row">
-			<div class="col-xm-0 col-sm-0 col-m-2"></div>
-			<div id="middleLeft" class="col-xm-12 col-sm-6 col-m-4"><img id="hmPic"></div>
-			<div id="middleRight" class="col-xm-12 col-sm-6 col-m-4"><a ></div>
-			<div class="col-xm-0 col-sm-0 col-m-2"></div>
-		</div>
-
-		<div class="row">
-			<div id="msg2" class="col-xm-12 col-sm-12 col-m-12"></div>
-		</div>
-		<div class="row">
-			<div class="col-xm-0 col-sm-1 col-m-1 hey"></div>
-			<div class="col-xm-12 col-sm-5 col-m-5 hey"></div>
-			<div class="col-xm-12 col-sm-5 col-m-5 hey">
-				<div class="row">
-					<div class="col-m-12">
-<!-- 						<p class="scoreLog p">SCORE LOG</p>
-						<P class="scoreLog p">Points: 1,000,000.00</P> -->
-					</div>
+		<div id="middleContainer">
+			<div class="row">
+				<div class="col-xm-0 col-sm-0 col-m-2"></div>
+				<div class="col-xm-12 col-sm-6 col-m-4">
+					<div id="middleLeft" class="row"></div>
+					<div id="middleLeft1" class="row"></div>
 				</div>
-				<div class="row"></div>
+				<div class="col-xm-12 col-sm-6 col-m-4">
+					<div id="middleRight" class="row"></div>
+					<div id="middleRight1" class="row"></div>
+					<div id="middleRight2" class="row"></div>
+					<div id="middleRight3" class="row"></div>
+					<div id="middleRight4" class="row"></div>
+				</div>
+				<div class="col-xm-0 col-sm-0 col-m-2"></div>
 			</div>
-			<div class="col-m-12 hey"></div>
 		</div>
 	</div>
 	    <script>
 
+        var pLanguages = ["sql", "java", "python", "javascript", "c++", "c#", "perl", "swift", "php", "ruby"];
+      	var plDefinitions = ["Domain-specific language used in programming and designed for managing data held in a relational database management system (RDBMS), or for stream processing in a relational data stream management system (RDSMS)", "General-purpose computer programming language that is concurrent, class-based, object-oriented,[14] and specifically designed to have as few implementation dependencies as possible. It is intended to let application developers 'write once, run anywhere' (WORA)", "Widely used high-level programming language for general-purpose programming, created by Guido van Rossum and first released in 1991. An interpreted language that has a design philosophy which emphasizes code readability", "High-level, dynamic, untyped, and interpreted run-time language. It has been standardized in the ECMAScript language specification. Alongside HTML and CSS, this language is one of the three core technologies of World Wide Web content production; the majority of websites employ it, and all modern Web browsers support it without the need for plug-ins", "Has imperative, object-oriented and generic programming features, while also providing facilities for low-level memory manipulation. It was designed with a bias toward system programming and embedded, resource-constrained and large systems, with performance, efficiency and flexibility of use as its design highlights", "Is a multi-paradigm programming language encompassing strong typing, imperative, declarative, functional, generic, object-oriented (class-based), and component-oriented programming disciplines", "Family of high-level, general-purpose, interpreted, dynamic programming languages, developed by Larry Wall in 1987 as a general-purpose Unix scripting language to make report processing easier", "General-purpose, multi-paradigm, compiled programming language developed by Apple Inc. for iOS, macOS, watchOS, tvOS, and Linux. Swift is designed to work with Apple's Cocoa and Cocoa Touch frameworks and the large body of extant Objective-C (ObjC) code written for Apple products.", "Server-side scripting language designed primarily for web development but also used as a general-purpose programming language. Originally created by Rasmus Lerdorf in 1994, the PHP reference implementation is now produced by The PHP Development Team.", "Dynamic, reflective, object-oriented, general-purpose programming language. It was designed and developed in the mid-1990s by Yukihiro 'Matz' Matsumoto in Japan. According to its creator, this language was influenced by Perl, Smalltalk, Eiffel, Ada, and Lisp."];
+      	var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
         var keyCount = 0;
-
-
-      	var player = {
+        
+      	var game = {
       		score: 0,
-      		trys: 5,
+      		chances: 7,
+      		wordsCompleted: 0,
+      		wordsUsed: [],
+      		activeWord: "",
+      		hint: "",
+      		usedLetters: "",
+      		message: "",
+      		wordDisplay: "",
+      		cLetterCount: 0,
 
+      		pickWord: function() {
+      			var x = Math.floor((Math.random()*9)+1);
+      			this.activeWord = pLanguages[x];
+      			this.hint = plDefinitions[x];
+      			return this.activeWord;
+      		},
+      		
+      		createDisplay: function() {
+      		  for (var y = 0; y < this.activeWord.length; y++) {
+            this.wordDisplay += "_ ";
+            }
+            return this.wordDisplay;
+      		},
 
+          	updateDisplay: function(userChoice) {
+	            var correct = false;
+	            for (var j = 0; j < this.activeWord.length; j++) {
+	              if (userChoice === this.activeWord[j]) {
+	                this.cLetterCount += 1;
+	                correct = true;
+	              }
+	              if (correct === true) {
+	                this.wordDisplay = this.wordDisplay.replace(this.wordDisplay[j], userChoice);
+	                correct = false;
+	              }
+	            }
+            return this.wordDisplay;
+          },
+
+      		guessedLetter: function() {
+      			for(var i = 0; i < activeWord.length; i++) {
+      				if (userChoice === activeWord[x][i]) {
+      					message = "One step closer!";
+      					
+      					$("#display").html().addClass("middleBoxes p middleRight");
+      				} else {
+      					message = "I think you already tried that letter";
+      				}
+      			}
+          
+
+      		}
       	};
+
+
 
       	document.onkeyup = function(event) {
       	var userChoice = String.fromCharCode(event.key).toLowerCase();
 
-      		if (keyCount === 0) {
+      		if (keyCount === 0 || chances === 0) {
       			$("#message").html("Guess the programming language").removeClass("firstMsg").addClass("secondMsg");
+      			var activeWord = game.pickWord();
+      			var wordDisplay = game.createDisplay();
 
       			// $("#hmPic").html("<img src="assets/hm1.png">").addClass("middleBoxes p middleLeft");
 
-      			$("#middleRight").html("Score: " + player.score).addClass("middleBoxes p middleRight");
+      			$("#middleRight").html("Score: " + game.score).addClass("middleBoxes p middleRight");
+      			$("#middleRight1").html("Chances: " + game.chances).addClass("middleBoxes p middleRight");
+      			$("#middleRight2").html("Used Letters: ").addClass("middleBoxes p middleRight");
+      			$("#middleRight3").html(game.usedLetters).addClass("middleBoxes p middleRight");
+      			
+      			$("#middleContainer").addClass("middleContainer");
+
+      			$("#middleLeft").html('<img src="assets/hm0.png">').addClass("middleBoxes p middleLeft");
+      			$("#middleLeft1").html("Programming Language: " + game.wordDisplay).addClass("middleBoxes p middleLeft");
+
 
       		} else {
       			// $("#middleLeft").html("Middle Left").addClass("middleBoxes p middleLeft");
-      			$("#middleRight").html("Score: " + player.score).addClass("middleBoxes p middleRight");
+      			$("#middleRight").html("Score: " + game.score).addClass("middleBoxes p middleRight");
 
       		}
 
       		
 
-      	// var car = {
-        //   make: "Honda",
-        //   model: "Fit",
-        //   color: "Blue Raspberry",
-        //   mileage: 3000,
-        //   isWorking: true,
 
-        //   driveToWork: function() {
-
-        //     alert("Old Mileage: " + this.mileage);
-
-        //     this.mileage = this.mileage + 8;
-
-        //     alert("New mileage: " + this.mileage);
-        //   },
-
-        //   driveAroundWorld: function() {
-
-        //     alert("Old Mileage: " + this.mileage);
-
-        //     this.mileage = this.mileage + 24000;
-
-        //     alert("New Mileage: " + this.mileage);
-        //     alert("Car needs a tuneup!");
-
-        //     this.isWorking = false;
-        //   },
-
-        //   getTuneUp: function() {
-        //     alert("Car is ready to go!");
-        //     this.isWorking = true;
-        //   },
-
-        //   honk: function() {
-        //     alert("Honk! Honk!");
-        //   }
-        // };
       	  // scoreKeeper();
 	      // var newDiv = $("<div>");
 	      // msg2.html("im here 2");
@@ -145,8 +165,6 @@
 
       };
 
-      var pLanguages = ["sql", "java", "python", "javascript", "c++", "c#", "perl", "swift", "php", "ruby"];
-      var plDefinitions = ["Domain-specific language used in programming and designed for managing data held in a relational database management system (RDBMS), or for stream processing in a relational data stream management system (RDSMS)", "General-purpose computer programming language that is concurrent, class-based, object-oriented,[14] and specifically designed to have as few implementation dependencies as possible. It is intended to let application developers 'write once, run anywhere' (WORA)", "Widely used high-level programming language for general-purpose programming, created by Guido van Rossum and first released in 1991. An interpreted language that has a design philosophy which emphasizes code readability", "High-level, dynamic, untyped, and interpreted run-time language. It has been standardized in the ECMAScript language specification. Alongside HTML and CSS, this language is one of the three core technologies of World Wide Web content production; the majority of websites employ it, and all modern Web browsers support it without the need for plug-ins", "Has imperative, object-oriented and generic programming features, while also providing facilities for low-level memory manipulation. It was designed with a bias toward system programming and embedded, resource-constrained and large systems, with performance, efficiency and flexibility of use as its design highlights", "Is a multi-paradigm programming language encompassing strong typing, imperative, declarative, functional, generic, object-oriented (class-based), and component-oriented programming disciplines", "Family of high-level, general-purpose, interpreted, dynamic programming languages, developed by Larry Wall in 1987 as a general-purpose Unix scripting language to make report processing easier", "General-purpose, multi-paradigm, compiled programming language developed by Apple Inc. for iOS, macOS, watchOS, tvOS, and Linux. Swift is designed to work with Apple's Cocoa and Cocoa Touch frameworks and the large body of extant Objective-C (ObjC) code written for Apple products.", "Server-side scripting language designed primarily for web development but also used as a general-purpose programming language. Originally created by Rasmus Lerdorf in 1994, the PHP reference implementation is now produced by The PHP Development Team.", "Dynamic, reflective, object-oriented, general-purpose programming language. It was designed and developed in the mid-1990s by Yukihiro 'Matz' Matsumoto in Japan. According to its creator, this language was influenced by Perl, Smalltalk, Eiffel, Ada, and Lisp."];
 
     </script>
 </body>
