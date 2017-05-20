@@ -31,7 +31,7 @@
 	</div>
 	<div class="row">
 		<p class="banner1">Programming</p>
-		<p class="banner2 x">HangMan</p>
+		<p class="banner2 x">Hang Man</p>
 	</div>
 
 	<div class="container container1">
@@ -46,6 +46,7 @@
 				<div class="col-xm-12 col-sm-6 col-m-4">
 					<div id="middleLeft" class="row"></div>
 					<div id="middleLeft1" class="row"></div>
+					<div id="middleLeft2" class="row"></div>
 				</div>
 				<div class="col-xm-12 col-sm-6 col-m-4">
 					<div id="middleRight" class="row"></div>
@@ -68,100 +69,97 @@
         
       	var game = {
       		score: 0,
-      		chances: 7,
+      		chances: 6,
       		wordsCompleted: 0,
       		wordsUsed: [],
-      		activeWord: "",
+      		activeWord: [],
       		hint: "",
       		usedLetters: "",
       		message: "",
-      		wordDisplay: "",
+      		wordDisplay: [],
       		cLetterCount: 0,
+      		correct: false,
+
 
       		pickWord: function() {
       			var x = Math.floor((Math.random()*9)+1);
-      			this.activeWord = pLanguages[x];
-      			this.hint = plDefinitions[x];
-      			return this.activeWord;
+      			var active = pLanguages[x];
+      			var hint = plDefinitions[x];
+      			for (var l = 0; l < active.length; l++) {
+      			  (this.activeWord).push(active[l]);
+      			  (this.wordDisplay).push("_ ");
+      			}
       		},
       		
-      		createDisplay: function() {
-      		  for (var y = 0; y < this.activeWord.length; y++) {
-            this.wordDisplay += "_ ";
+          updateDisplay: function(userChoice) {
+            for (var j = 0; j < this.activeWord.length; j++) {
+              if (userChoice === this.activeWord[j]) {
+                this.cLetterCount += 1;
+                this.correct = true;
+                this.wordDisplay[j] = this.activeWord[j];
+              }
             }
-            return this.wordDisplay;
-      		},
-
-          	updateDisplay: function(userChoice) {
-	            var correct = false;
-	            for (var j = 0; j < this.activeWord.length; j++) {
-	              if (userChoice === this.activeWord[j]) {
-	                this.cLetterCount += 1;
-	                correct = true;
-	              }
-	              if (correct === true) {
-	                this.wordDisplay = this.wordDisplay.replace(this.wordDisplay[j], userChoice);
-	                correct = false;
-	              }
-	            }
-            return this.wordDisplay;
           },
-
-      		guessedLetter: function() {
-      			for(var i = 0; i < activeWord.length; i++) {
-      				if (userChoice === activeWord[x][i]) {
-      					message = "One step closer!";
-      					
-      					$("#display").html().addClass("middleBoxes p middleRight");
-      				} else {
-      					message = "I think you already tried that letter";
-      				}
-      			}
-          
-
-      		}
       	};
-
-
+      	
 
       	document.onkeyup = function(event) {
       	var userChoice = String.fromCharCode(event.key).toLowerCase();
 
-      		if (keyCount === 0 || chances === 0) {
+      		if (keyCount === 0) {
       			$("#message").html("Guess the programming language").removeClass("firstMsg").addClass("secondMsg");
-      			var activeWord = game.pickWord();
-      			var wordDisplay = game.createDisplay();
+      			game.pickWord();
+      			keyCount += 1;
 
       			// $("#hmPic").html("<img src="assets/hm1.png">").addClass("middleBoxes p middleLeft");
 
       			$("#middleRight").html("Score: " + game.score).addClass("middleBoxes p middleRight");
-      			$("#middleRight1").html("Chances: " + game.chances).addClass("middleBoxes p middleRight");
+      			$("#middleRight1").html("Chances Left: " + game.chances).addClass("middleBoxes p middleRight");
       			$("#middleRight2").html("Used Letters: ").addClass("middleBoxes p middleRight");
       			$("#middleRight3").html(game.usedLetters).addClass("middleBoxes p middleRight");
-      			
+
       			$("#middleContainer").addClass("middleContainer");
 
       			$("#middleLeft").html('<img src="assets/hm0.png">').addClass("middleBoxes p middleLeft");
-      			$("#middleLeft1").html("Programming Language: " + game.wordDisplay).addClass("middleBoxes p middleLeft");
-
+      			$("#middleLeft1").html("Programming Language:").addClass("middleBoxes p middleLeft");
+      			$("#middleLeft2").html(game.wordDisplay).addClass("middleBoxes p middleLeft");
 
       		} else {
-      			// $("#middleLeft").html("Middle Left").addClass("middleBoxes p middleLeft");
-      			$("#middleRight").html("Score: " + game.score).addClass("middleBoxes p middleRight");
+
+      			game.updateDisplay("p");
+
+      			if (game.correct === false) {
+
+      				game.chances = (game.chances - 1);
+      				$("#middleRight1").html("Chances Left: " + game.chances).addClass("middleBoxes p middleRight");
+
+	      			if (game.chances === 5) {
+	      				$("#middleLeft").html('<img src="assets/hm1.png">').addClass("middleBoxes p middleLeft");
+	      			} else if (game.chances === 4) {
+	      				$("#middleLeft").html('<img src="assets/hm2.png">').addClass("middleBoxes p middleLeft");
+	      			} else if (game.chances === 3) {
+	      				$("#middleLeft").html('<img src="assets/hm3.png">').addClass("middleBoxes p middleLeft");
+	      			} else if (game.chances === 2) {
+	      				$("#middleLeft").html('<img src="assets/hm4.png">').addClass("middleBoxes p middleLeft");
+	      			} else if (game.chances === 1) {
+	      				$("#middleLeft").html('<img src="assets/hm5.png">').addClass("middleBoxes p middleLeft");
+	      			} else if (game.chances === 0) {
+	      				$("#middleLeft").html('<img src="assets/hm7.png">').addClass("middleBoxes p middleLeft");
+	      			}
+
+	      		} else if (game.corret === true && cLetterCount === game.activeWord.length) {
+	      			$("#message").html("YOU GOT IT").addClass("winningText");
+	      			game.score += 1;
+	      			game.cLetterCount = 0;
+	      			game.chances = 6;
+	      			game.pickWord();
+
+      			} else {
+      				$("#middleLeft2").html(game.wordDisplay).addClass("middleBoxes p middleLeft");
+      				game.correct = false;
+      			}
 
       		}
-
-      		
-
-
-      	  // scoreKeeper();
-	      // var newDiv = $("<div>");
-	      // msg2.html("im here 2");
-	      // $("#msg2").prepend(newDiv);
-
-
-          // var html = "<p></p>";
-          // document.querySelector('#message').innerHTML = html;
 
       };
 

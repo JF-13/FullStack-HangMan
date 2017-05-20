@@ -108,9 +108,12 @@ body {
 .middleContainer {
 	padding-top: 20px;
 	border-radius: 10px;
-	border: 1px;
-	border-style: solid;
-	border-color: purple;
+	border: 2px;
+	border-style: inset;
+	border-color: white;
+	border-left: 0px;
+	border-right: 20px;
+	background: rgba(255,255,255,0.2);
 }
 
 .middleBoxes {
@@ -119,12 +122,19 @@ body {
 	font-size: 24px;
 	color: white;
 
+
 }
 
 .middleLeft {
 	padding-bottom: 20px;
+
 }
 
 .middleRight {
 	padding-bottom: 20px;
+
+}
+
+.winningText {
+	font-size: 30px;
 }
