@@ -10,7 +10,6 @@ body {
 	background-position: top center !important;
 	background-repeat: no-repeat !important;
 	background-attachment: fixed;
-/*	background-color: rgba(0,0,255,0.5);*/
 }
 
 .p {
@@ -35,16 +34,6 @@ body {
 	font-size: 90px;
 	line-height: 30%;
 	color: #bf00ff;
-/*	text-shadow:  rgb(255, 255, 255)
-	0px 0px 10px, rgb(255, 255, 255)
-	0px 0px 20px, rgb(255, 255, 255)
-	0px 0px 30px, rgb(255, 0, 222)
-	0px 0px 40px, rgb(255, 0, 222)
-	0px 0px 70px, rgb(255, 0, 222)
-	0px 0px 80px, rgb(255, 0, 222)
-	0px 0px 100px;;*/
-/*	-webkit-text-stroke-width: .5px;
-   	-webkit-text-stroke-color: #bcd9f5;*/
 
 }
 
@@ -98,43 +87,40 @@ body {
 .x {
 	margin-bottom: 50px;
 }
-/*
-.footer {
-	text-align: center;
-	color: white;
-	background-color: grey;
-	padding-top: 17px;
-}*/
+
 .middleContainer {
-	padding-top: 20px;
+	border-bottom-left-radius: 0px;
+	border-top-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+	border-top-right-radius: 0px;
 	border-radius: 10px;
-	border: 2px;
-	border-style: inset;
+	border: 1px;
+	border-style: solid;
 	border-color: white;
-	border-left: 0px;
-	border-right: 20px;
-	background: rgba(255,255,255,0.2);
 }
+
 
 .middleBoxes {
 
 	text-align: center;
 	font-size: 24px;
 	color: white;
-
-
+	padding-top: 20px;
 }
 
 .middleLeft {
-	padding-bottom: 20px;
-
+	margin-bottom: 20px;
 }
 
 .middleRight {
-	padding-bottom: 20px;
 
 }
 
-.winningText {
-	font-size: 30px;
+.messageReset {
+	font-family: 'Codystar', cursive;
+	font-size: 16px;
+	color: white;
+	text-align: center;
+	margin-top: 40px;
+	margin-bottom: 30px;
 }
