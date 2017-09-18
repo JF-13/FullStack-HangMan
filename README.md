@@ -1,4 +1,4 @@
-## Programing Language Hangman
+# Programing Language Hangman
 
 ## Game using JS
 
